@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Monjave Seeds - A Revolução do Cultivo de Cannabis</title>
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Google Fonts: Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Alpine.js for interactivity -->
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <!-- Custom CSS and Tailwind Config -->
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: #111827; /* Dark background */
+            }
+            .hero-bg {
+                background-image:
+                    linear-gradient(
+                        to bottom,
+                        rgba(17, 24, 39, 0.8),
+                        rgba(17, 24, 39, 1)
+                    ),
+                    url("https://placehold.co/1920x1080/111827/FFFFFF?text=Imagem+Abstrata+de+Fundo");
+                background-size: cover;
+                background-position: center;
+            }
+            .brand-gradient-text {
+                background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .brand-gradient-button {
+                background: linear-gradient(90deg, #f59e0b, #ef4444);
+                transition: all 0.3s ease;
+            }
+            .brand-gradient-button:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            }
+            .card-bg {
+                background-color: #1f2937;
+            }
+        </style>
+    </head>
+    <body class="text-gray-200">
+        <!-- Header -->
+        <header
+            x-data="{ open: false }"
+            class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50"
+        >
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex-shrink-0">
+                        <a href="#">
+                            <img
+                                class="h-14 w-auto"
+                                src="img/logo.png"
+                                alt="Monjave Seeds Logo"
+                            />
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a
+                                href="#sobre"
+                                class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                >Sobre Nós</a
+                            >
+                            <a
+                                href="#genetica"
+                                class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                >Genética</a
+                            >
+                            <a
+                                href="#produtos"
+                                class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                >Produtos</a
+                            >
+                            <a
+                                href="#faq"
+                                class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                >FAQ</a
+                            >
+                            <a
+                                href="#contato"
+                                class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                >Contato</a
+                            >
+                        </div>
+                    </div>
+                    <div class="-mr-2 flex md:hidden">
+                        <button
+                            @click="open = !open"
+                            type="button"
+                            class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                            aria-controls="mobile-menu"
+                            aria-expanded="false"
+                        >
+                            <span class="sr-only">Abrir menu principal</span>
+                            <svg
+                                :class="{'hidden': open, 'block': !open }"
+                                class="block h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                            <svg
+                                :class="{'block': open, 'hidden': !open }"
+                                class="hidden h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                x-show="open"
+                @click.away="open = false"
+                class="md:hidden"
+                id="mobile-menu"
+            >
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a
+                        href="#sobre"
+                        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >Sobre Nós</a
+                    >
+                    <a
+                        href="#genetica"
+                        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >Genética</a
+                    >
+                    <a
+                        href="#produtos"
+                        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >Produtos</a
+                    >
+                    <a
+                        href="#faq"
+                        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >FAQ</a
+                    >
+                    <a
+                        href="#contato"
+                        class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >Contato</a
+                    >
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="hero-bg">
+                <div
+                    class="container mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center"
+                >
+                    <div class="flex justify-center mb-8">
+                        <img
+                            src="img/logo.png"
+                            alt="Logo Monjave Seeds"
+                            class="w-64 md:w-80 h-auto"
+                        />
+                    </div>
+                    <h1
+                        class="text-4xl md:text-6xl font-extrabold text-white leading-tight"
+                    >
+                        A Revolução no Cultivo de Cannabis
+                        <br class="hidden md:block" />
+                        <span class="brand-gradient-text"
+                            >Chegou ao Brasil.</span
+                        >
+                    </h1>
+                    <p
+                        class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-300"
+                    >
+                        Sementes de Cânhamo Premium com Genética da Califórnia,
+                        agora ao seu alcance.
+                    </p>
+                    <div class="mt-10">
+                        <a
+                            href="#produtos"
+                            class="brand-gradient-button text-white font-bold py-4 px-10 rounded-full text-lg shadow-lg"
+                        >
+                            Explore Nossas Genéticas
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sobre Nós Section -->
+            <section id="sobre" class="py-20 sm:py-28">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+                    >
+                        <div class="order-2 md:order-1">
+                            <h2
+                                class="text-3xl md:text-4xl font-bold text-white mb-4"
+                            >
+                                Nossa
+                                <span class="brand-gradient-text"
+                                    >Inspiração</span
+                                >
+                            </h2>
+                            <p class="text-gray-300 mb-4">
+                                Nossa jornada é inspirada nos povos originários
+                                dos Estados Unidos, especialmente os Mojaves, um
+                                povo de sonhos e visões. O nosso sonho de
+                                aprimorar o cultivo da cannabis deu origem à
+                                Monjave Seeds.
+                            </p>
+                            <p class="text-gray-300">
+                                Oferecemos sementes de altíssima qualidade,
+                                transformando nossa visão em realidade. Com
+                                tecnologia desenvolvida na Califórnia há mais de
+                                20 anos, estamos revolucionando o mercado
+                                brasileiro.
+                            </p>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <img
+                                src="https://placehold.co/600x400/1F2937/FFFFFF?text=Planta+de+Cannabis+Iluminada"
+                                alt="Planta de Cannabis com luzes coloridas"
+                                class="rounded-2xl shadow-2xl w-full"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Genética Section -->
+            <section id="genetica" class="py-20 sm:py-28 bg-gray-900">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Genética de
+                        <span class="brand-gradient-text">Elite</span>
+                    </h2>
+                    <p class="max-w-3xl mx-auto text-gray-300 mb-12">
+                        Nos dedicamos a criar as melhores sementes de cânhamo
+                        com alto teor de CBD do mundo. Qualidade mundial ao seu
+                        alcance.
+                    </p>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                    >
+                        <!-- Feature Item -->
+                        <div
+                            class="card-bg p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+                        >
+                            <div
+                                class="flex justify-center items-center h-16 w-16 rounded-full bg-amber-500/20 mx-auto mb-4"
+                            >
+                                <svg
+                                    class="h-8 w-8 text-amber-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">
+                                Qualidade Garantida
+                            </h3>
+                            <p class="text-gray-400">
+                                Garantia de 100% de qualidade em toda nossa
+                                genética.
+                            </p>
+                        </div>
+                        <!-- Feature Item -->
+                        <div
+                            class="card-bg p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+                        >
+                            <div
+                                class="flex justify-center items-center h-16 w-16 rounded-full bg-red-500/20 mx-auto mb-4"
+                            >
+                                <svg
+                                    class="h-8 w-8 text-red-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                                    />
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">
+                                Germinação Garantida
+                            </h3>
+                            <p class="text-gray-400">
+                                100% de taxa de germinação para um cultivo de
+                                sucesso.
+                            </p>
+                        </div>
+                        <!-- Feature Item -->
+                        <div
+                            class="card-bg p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+                        >
+                            <div
+                                class="flex justify-center items-center h-16 w-16 rounded-full bg-purple-500/20 mx-auto mb-4"
+                            >
+                                <svg
+                                    class="h-8 w-8 text-purple-500"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 22.5l-.648-1.938a3.375 3.375 0 00-2.685-2.685L11.25 18l1.938-.648a3.375 3.375 0 002.685-2.685L16.25 13.5l.648 1.938a3.375 3.375 0 002.685 2.685L21.75 18l-1.938.648a3.375 3.375 0 00-2.685 2.685z"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">
+                                Feminização Pura
+                            </h3>
+                            <p class="text-gray-400">
+                                Sementes 99.9% feminizadas para otimizar sua
+                                colheita.
+                            </p>
+                        </div>
+                        <!-- Feature Item -->
+                        <div
+                            class="card-bg p-6 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300"
+                        >
+                            <div
+                                class="flex justify-center items-center h-16 w-16 rounded-full bg-green-500/20 mx-auto mb-4"
+                            >
+                                <svg
+                                    class="h-8 w-8 text-green-500"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"
+                                    />
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2-2h8a1 1 0 001-1zM22 12h-4l-3-6-3 6h-4"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">
+                                Envio Garantido
+                            </h3>
+                            <p class="text-gray-400">
+                                Entrega rápida e segura em todo o território
+                                nacional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Produtos Section -->
+            <section id="produtos" class="py-20 sm:py-28">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+                    >
+                        Nossas Sementes
+                        <span class="brand-gradient-text">Premium</span>
+                    </h2>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                    >
+                        <!-- Product Card -->
+                        <div
+                            class="card-bg rounded-2xl overflow-hidden shadow-lg flex flex-col"
+                        >
+                            <img
+                                src="img/acdc.jpeg"
+                                alt="Semente ACDC Feminizada"
+                                class="w-full h-48 object-cover"
+                            />
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-white">
+                                    ACDC Feminizada
+                                </h3>
+                                <p class="text-gray-400 mt-2 flex-grow">
+                                    Apelidada de "Gigante Verde Alegre", é uma
+                                    planta fenomenalmente forte e saudável.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="brand-gradient-button text-center text-white font-semibold py-2 px-4 rounded-lg mt-4"
+                                    >Compre Agora</a
+                                >
+                            </div>
+                        </div>
+                        <!-- Product Card -->
+                        <div
+                            class="card-bg rounded-2xl overflow-hidden shadow-lg flex flex-col"
+                        >
+                            <img
+                                src="img/cherry.jpg"
+                                alt="Semente Cherry ACDC Feminizada"
+                                class="w-full h-48 object-cover"
+                            />
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-white">
+                                    Cherry ACDC Feminizada
+                                </h3>
+                                <p class="text-gray-400 mt-2 flex-grow">
+                                    Crescimento robusto com folhas roxas e tons
+                                    de vermelho e verde-limão.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="brand-gradient-button text-center text-white font-semibold py-2 px-4 rounded-lg mt-4"
+                                    >Compre Agora</a
+                                >
+                            </div>
+                        </div>
+                        <!-- Product Card -->
+                        <div
+                            class="card-bg rounded-2xl overflow-hidden shadow-lg flex flex-col"
+                        >
+                            <img
+                                src="img/gorila.jpeg"
+                                alt="Semente Gorilla ACDC Feminizada"
+                                class="w-full h-48 object-cover"
+                            />
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-white">
+                                    Gorilla ACDC (1:1)
+                                </h3>
+                                <p class="text-gray-400 mt-2 flex-grow">
+                                    Planta vigorosa com flores densas e aroma de
+                                    chá chai latte.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="brand-gradient-button text-center text-white font-semibold py-2 px-4 rounded-lg mt-4"
+                                    >Compre Agora</a
+                                >
+                            </div>
+                        </div>
+                        <!-- Product Card -->
+                        <div
+                            class="card-bg rounded-2xl overflow-hidden shadow-lg flex flex-col"
+                        >
+                            <img
+                                src="https://placehold.co/400x300/111827/FFFFFF?text=Maverick+Autoflower"
+                                alt="Semente Maverick Autoflower Feminizada"
+                                class="w-full h-48 object-cover"
+                            />
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-white">
+                                    Maverick Autoflower
+                                </h3>
+                                <p class="text-gray-400 mt-2 flex-grow">
+                                    Ideal para produção de biomassa, fácil de
+                                    colher e com cores únicas.
+                                </p>
+                                <a
+                                    href="#"
+                                    class="brand-gradient-button text-center text-white font-semibold py-2 px-4 rounded-lg mt-4"
+                                    >Compre Agora</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="py-20 sm:py-28 bg-gray-900">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+                    >
+                        Perguntas
+                        <span class="brand-gradient-text">Frequentes</span>
+                    </h2>
+                    <div class="space-y-4" x-data="{ selected: null }">
+                        <!-- FAQ Item 1 -->
+                        <div class="card-bg rounded-lg">
+                            <button
+                                @click="selected = selected === 1 ? null : 1"
+                                class="w-full text-left p-6"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-white"
+                                    >
+                                        O que significa semente "feminizada"?
+                                    </h3>
+                                    <span
+                                        :class="{'rotate-180': selected === 1}"
+                                        class="transform transition-transform duration-300"
+                                    >
+                                        <svg
+                                            class="h-6 w-6 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div
+                                x-show="selected === 1"
+                                x-collapse
+                                class="px-6 pb-6 text-gray-300"
+                            >
+                                <p>
+                                    É o processo de criação de sementes que
+                                    contêm apenas cromossomos XX, resultando em
+                                    uma população de plantas fêmeas. Garantimos
+                                    uma taxa de 99.9% de feminização para
+                                    maximizar sua colheita e evitar polinização
+                                    indesejada.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 2 -->
+                        <div class="card-bg rounded-lg">
+                            <button
+                                @click="selected = selected === 2 ? null : 2"
+                                class="w-full text-left p-6"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-white"
+                                    >
+                                        Como posso pagar?
+                                    </h3>
+                                    <span
+                                        :class="{'rotate-180': selected === 2}"
+                                        class="transform transition-transform duration-300"
+                                    >
+                                        <svg
+                                            class="h-6 w-6 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div
+                                x-show="selected === 2"
+                                x-collapse
+                                class="px-6 pb-6 text-gray-300"
+                            >
+                                <p>
+                                    Aceitamos cartão de crédito e transferência
+                                    eletrônica para pedidos online, com total
+                                    segurança e criptografia. Para pedidos a
+                                    granel (acima de 500 sementes), entre em
+                                    contato diretamente para condições
+                                    especiais.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 3 -->
+                        <div class="card-bg rounded-lg">
+                            <button
+                                @click="selected = selected === 3 ? null : 3"
+                                class="w-full text-left p-6"
+                            >
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-white"
+                                    >
+                                        Quanto tempo para receber meu pedido?
+                                    </h3>
+                                    <span
+                                        :class="{'rotate-180': selected === 3}"
+                                        class="transform transition-transform duration-300"
+                                    >
+                                        <svg
+                                            class="h-6 w-6 text-gray-400"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </button>
+                            <div
+                                x-show="selected === 3"
+                                x-collapse
+                                class="px-6 pb-6 text-gray-300"
+                            >
+                                <p>
+                                    Os pedidos são processados e enviados no
+                                    mesmo dia, se realizados antes das 15h. O
+                                    prazo de entrega estimado é de 7 a 10 dias
+                                    úteis para todo o Brasil.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contato" class="py-20 sm:py-28 text-center">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Prepare-se para a Melhor
+                        <span class="brand-gradient-text">Colheita</span>
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-300 mb-8">
+                        A Monjave Seeds é sua melhor escolha para sementes de
+                        cânhamo feminizadas com alto teor de CBD. Fale conosco e
+                        revolucione seu cultivo.
+                    </p>
+                    <div
+                        class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 text-lg mb-10"
+                    >
+                        <p class="text-white">
+                            <strong>Email:</strong> contato@monjaveseeds.com
+                        </p>
+                        <p class="text-white">
+                            <strong>WhatsApp:</strong> (11) 94158-6679
+                        </p>
+                    </div>
+                    <a
+                        href="#produtos"
+                        class="brand-gradient-button text-white font-bold py-4 px-10 rounded-full text-lg shadow-lg"
+                    >
+                        Compre Agora
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 border-t border-gray-800">
+            <div
+                class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-400"
+            >
+                <p>&copy; 2025 Monjave Seeds. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+        <a
+            href="https://wa.me/5511941586679"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="fixed bottom-5 right-5 bg-[#25D366] w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform duration-300 z-50"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-whatsapp"
+                viewBox="0 0 16 16"
+            >
+                <path
+                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05s-.843-.295-1.604-.987c-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+                />
+            </svg>
+        </a>
+    </body>
+</html>
