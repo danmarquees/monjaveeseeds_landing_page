@@ -1,7 +1,16 @@
 version: 1
+# render.yaml
+# Blueprint para o deploy da landing page da Monjave Seeds no Render.
+
 services:
-  - type: static-site
-    name: monjaveeseeds-landing-page
-    static_site_config:
-      build_command: "" # No build command needed for static HTML
-      publish_path: "src" # Root directory for the static files
+  - type: static_site
+    name: monjave-seeds-landing-page
+    env: static
+    # O branch a ser usado para o deploy.
+    branch: main
+    # Diretório onde os arquivos estáticos estão localizados.
+    # '.' significa o diretório raiz do repositório.
+    publish_dir: .
+    # Como não há um processo de build (npm run build, etc.),
+    # não precisamos de um comando de build.
+    build_command: ""
