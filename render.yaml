@@ -1,0 +1,7 @@
+version: 1
+services:
+  - type: static-site
+    name: monjaveeseeds-landing-page
+    static_site_config:
+      build_command: "" # No build command needed for static HTML
+      publish_path: "." # Root directory for the static files
