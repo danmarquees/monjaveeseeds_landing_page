@@ -18,7 +18,7 @@
         />
 
         <!-- Alpine.js for interactivity -->
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         
         <!-- Dynamic Background Script -->
         <script>
@@ -89,9 +89,120 @@
             .card-bg {
                 background-color: #1f2937;
             }
+            .popup-overlay {
+                background-color: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(5px);
+            }
+            .popup-content {
+                background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+                border: 1px solid #4b5563;
+            }
+            .age-verification-bg {
+                background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            }
+            .cookie-policy-bg {
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            }
         </style>
     </head>
-    <body class="text-gray-200">
+    <body class="text-gray-200" x-data="{ showAgeVerification: !localStorage.getItem('ageVerified'), showCookiePolicy: !localStorage.getItem('cookiesAccepted') && localStorage.getItem('ageVerified') }">
+        <!-- Age Verification Popup -->
+        <div 
+            x-show="showAgeVerification" 
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 z-50 flex items-center justify-center popup-overlay"
+            style="display: none;"
+        >
+            <div 
+                x-show="showAgeVerification"
+                x-transition:enter="transition ease-out duration-300 transform"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-200 transform"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95"
+                class="popup-content rounded-2xl p-8 m-4 max-w-md w-full text-center shadow-2xl"
+            >
+                <div class="mb-6">
+                    <div class="age-verification-bg w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-2">Verificação de Idade</h2>
+                    <p class="text-gray-300 mb-6">
+                        Este site contém informações sobre produtos de cannabis. 
+                        Você deve ter 18 anos ou mais para continuar.
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <button 
+                        @click="localStorage.setItem('ageVerified', 'true'); showAgeVerification = false; showCookiePolicy = !localStorage.getItem('cookiesAccepted');"
+                        class="w-full age-verification-bg text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+                    >
+                        Tenho 18+ anos
+                    </button>
+                    <button 
+                        @click="window.location.href = 'https://www.google.com'"
+                        class="w-full bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition-colors"
+                    >
+                        Sou menor de 18 anos
+                    </button>
+                </div>
+                <p class="text-xs text-gray-400 mt-4">
+                    Ao continuar, você confirma que tem idade legal para visualizar este conteúdo.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cookie Policy Popup -->
+        <div 
+            x-show="showCookiePolicy" 
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 translate-y-4"
+            class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-40"
+            style="display: none;"
+        >
+            <div class="popup-content rounded-xl p-6 shadow-2xl">
+                <div class="flex items-start space-x-3">
+                    <div class="cookie-policy-bg w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white mb-2">Política de Cookies</h3>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Utilizamos cookies para melhorar sua experiência, personalizar conteúdo e analisar nosso tráfego. 
+                            Ao continuar navegando, você concorda com nossa política de cookies.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button 
+                                @click="localStorage.setItem('cookiesAccepted', 'true'); showCookiePolicy = false;"
+                                class="cookie-policy-bg text-white font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity text-sm"
+                            >
+                                Aceitar Cookies
+                            </button>
+                            <button 
+                                @click="showCookiePolicy = false;"
+                                class="bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors text-sm"
+                            >
+                                Recusar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Header -->
         <header
             x-data="{ open: false }"
