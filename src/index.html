@@ -19,6 +19,39 @@
 
         <!-- Alpine.js for interactivity -->
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        
+        <!-- Dynamic Background Script -->
+        <script>
+            // Array of cannabis-related images from Unsplash
+            const cannabisImages = [
+                'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Cannabis plant close-up
+                'https://images.unsplash.com/photo-1574263867128-a3d5c1b1deac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Cannabis leaves
+                'https://images.unsplash.com/photo-1536431311719-398b6704d4cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Cannabis field
+                'https://images.unsplash.com/photo-1582731129901-7d9b7f6b4e4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Cannabis buds
+                'https://images.unsplash.com/photo-1605027990121-3b2c6c8b5b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Cannabis cultivation
+                'https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80', // Cannabis greenhouse
+                'https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'  // Cannabis trichomes
+            ];
+            
+            let currentImageIndex = 0;
+            
+            function changeBackgroundImage() {
+                const heroSection = document.querySelector('.hero-bg');
+                if (heroSection) {
+                    currentImageIndex = (currentImageIndex + 1) % cannabisImages.length;
+                    heroSection.style.setProperty('--bg-image', `url('${cannabisImages[currentImageIndex]}')`);
+                }
+            }
+            
+            // Change background every 5 seconds
+            document.addEventListener('DOMContentLoaded', function() {
+                const heroSection = document.querySelector('.hero-bg');
+                if (heroSection) {
+                    heroSection.style.setProperty('--bg-image', `url('${cannabisImages[0]}')`);
+                    setInterval(changeBackgroundImage, 5000);
+                }
+            });
+        </script>
 
         <!-- Custom CSS and Tailwind Config -->
         <style>
@@ -30,12 +63,15 @@
                 background-image:
                     linear-gradient(
                         to bottom,
-                        rgba(107, 114, 128, 0.8),
-                        rgba(107, 114, 128, 1)
+                        rgba(107, 114, 128, 0.7),
+                        rgba(107, 114, 128, 0.9)
                     ),
-                    url("https://placehold.co/1920x1080/6b7280/FFFFFF?text=Imagem+Abstrata+de+Fundo");
+                    var(--bg-image, url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'));
                 background-size: cover;
                 background-position: center;
+                background-attachment: fixed;
+                transition: background-image 1s ease-in-out;
+                position: relative;
             }
             .brand-gradient-text {
                 background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6);
