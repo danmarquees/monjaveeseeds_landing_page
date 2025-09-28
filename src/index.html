@@ -120,38 +120,38 @@
             .cookie-policy-bg {
                 background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             }
-            
+
             /* Expandable Card Styles */
             .expandable-card {
                 transition: all 0.3s ease;
             }
-            
+
             .expandable-card:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             }
-            
+
             .expandable-content {
                 transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
             }
-            
+
             .expandable-content.expanded {
                 max-height: 1000px !important;
                 opacity: 1 !important;
                 margin-bottom: 1rem;
             }
-            
+
             .expandable-content.collapsed {
                 max-height: 0 !important;
                 opacity: 0 !important;
                 margin-bottom: 0 !important;
             }
-            
+
             /* Smooth icon rotation */
             .rotate-icon {
                 transition: transform 0.3s ease-in-out;
             }
-            
+
             /* Badge styles for CBD/THC indicators */
             .info-badge {
                 display: inline-flex;
@@ -162,33 +162,33 @@
                 font-weight: 500;
                 transition: all 0.2s ease;
             }
-            
+
             .info-badge:hover {
                 transform: scale(1.05);
             }
-            
+
             /* Responsive improvements */
             @media (max-width: 768px) {
                 .expandable-card {
                     margin-bottom: 1rem;
                 }
-                
+
                 .expandable-content {
                     font-size: 0.875rem;
                 }
-                
+
                 .info-badge {
                     font-size: 0.6875rem;
                     padding: 0.2rem 0.6rem;
                 }
             }
-            
+
             /* Focus styles for accessibility */
             .expandable-card button:focus {
                 outline: 2px solid #f59e0b;
                 outline-offset: 2px;
             }
-            
+
             /* Animation for content reveal */
             @keyframes fadeInUp {
                 from {
@@ -200,66 +200,66 @@
                     transform: translateY(0);
                 }
             }
-            
+
             .expandable-content > div > div {
                 animation: fadeInUp 0.4s ease-out forwards;
             }
-            
+
             /* Product Modal Styles */
             .product-modal {
                 backdrop-filter: blur(8px);
                 background-color: rgba(0, 0, 0, 0.8);
             }
-            
+
             .modal-content {
                 background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
                 border: 1px solid #4b5563;
                 max-height: 90vh;
                 overflow-y: auto;
             }
-            
+
             .modal-content::-webkit-scrollbar {
                 width: 6px;
             }
-            
+
             .modal-content::-webkit-scrollbar-track {
                 background: #374151;
                 border-radius: 3px;
             }
-            
+
             .modal-content::-webkit-scrollbar-thumb {
                 background: #6b7280;
                 border-radius: 3px;
             }
-            
+
             .modal-content::-webkit-scrollbar-thumb:hover {
                 background: #9ca3af;
             }
-            
+
             .modal-header {
                 background: linear-gradient(90deg, #f59e0b, #ef4444);
                 border-bottom: 1px solid #4b5563;
             }
-            
+
             .modal-close-btn {
                 transition: all 0.2s ease;
             }
-            
+
             .modal-close-btn:hover {
                 background-color: rgba(255, 255, 255, 0.1);
                 transform: scale(1.1);
             }
-            
+
             .modal-section {
                 border-left: 3px solid transparent;
                 transition: all 0.3s ease;
             }
-            
+
             .modal-section:hover {
                 border-left-color: #f59e0b;
                 background-color: rgba(245, 158, 11, 0.05);
             }
-            
+
             @media (max-width: 768px) {
                 .modal-content {
                     margin: 1rem;
@@ -268,8 +268,8 @@
             }
         </style>
     </head>
-    <body class="text-gray-200" x-data="{ 
-        showAgeVerification: !localStorage.getItem('ageVerified'), 
+    <body class="text-gray-200" x-data="{
+        showAgeVerification: !localStorage.getItem('ageVerified'),
         showCookiePolicy: !localStorage.getItem('cookiesAccepted') && localStorage.getItem('ageVerified'),
         activeModal: null,
         openModal(productId) { this.activeModal = productId; document.body.style.overflow = 'hidden'; },
@@ -622,8 +622,8 @@
                         </div>
                         <div class="order-1 md:order-2">
                             <img
-                                src="./img/img_1.jpg"
-                                alt="Planta de Cannabis com joaninha"
+                                src="./img/plant.jpeg"
+                                alt="Planta com joaninha"
                                 class="rounded-2xl shadow-2xl w-full"
                             />
                         </div>
@@ -817,7 +817,7 @@
                                 <h3 class="text-xl font-bold text-white mb-3">
                                     ACDC Feminizada
                                 </h3>
-                                
+
                                 <div class="mb-4">
                                     <div class="flex flex-wrap gap-2 mb-3">
                                         <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium">
@@ -854,7 +854,7 @@
                                 <h3 class="text-xl font-bold text-white mb-3">
                                     Cherry ACDC
                                 </h3>
-                                
+
                                 <div class="mb-4">
                                     <div class="flex flex-wrap gap-2 mb-3">
                                         <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium">
@@ -891,7 +891,7 @@
                                 <h3 class="text-xl font-bold text-white mb-3">
                                     Gorilla ACDC (1:1)
                                 </h3>
-                                
+
                                 <div class="mb-4">
                                     <div class="flex flex-wrap gap-2 mb-3">
                                         <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium">
@@ -931,7 +931,7 @@
                                 <h3 class="text-xl font-bold text-white mb-3">
                                     Maverick Autoflower
                                 </h3>
-                                
+
                                 <div class="mb-4">
                                     <div class="flex flex-wrap gap-2 mb-3">
                                         <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs font-medium">
@@ -965,8 +965,8 @@
 
                 <!-- Product Modals -->
                 <!-- ACDC Modal -->
-                <div 
-                    x-show="activeModal === 'acdc'" 
+                <div
+                    x-show="activeModal === 'acdc'"
                     x-transition:enter="transition ease-out duration-300"
                     x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100"
@@ -978,7 +978,7 @@
                     class="fixed inset-0 z-50 flex items-center justify-center product-modal"
                     style="display: none;"
                 >
-                    <div 
+                    <div
                         x-show="activeModal === 'acdc'"
                         x-transition:enter="transition ease-out duration-300 transform"
                         x-transition:enter-start="opacity-0 scale-95"
